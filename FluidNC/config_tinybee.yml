@@ -1,0 +1,130 @@
+board: MKS TinyBee V1.0 XYZ
+name: Teamkde
+
+kinematics:
+  Cartesian:
+
+i2so:
+  bck_pin: gpio.25
+  data_pin: gpio.27
+  ws_pin: gpio.26
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+sdcard:
+  cs_pin: gpio.5
+  # uses TH2 IO34 active low - MAKE SURE jumper J2 is set to SDDET!!!
+  card_detect_pin: gpio.34:low
+
+stepping:
+  engine: I2S_STATIC
+  idle_ms: 255
+  pulse_us: 4
+  dir_delay_us: 1
+  disable_delay_us: 2
+
+axes:
+  x:
+    steps_per_mm: 800
+    max_rate_mm_per_min: 8000.000
+    acceleration_mm_per_sec2: 80.000
+    max_travel_mm: 2500.000
+    soft_limits: false
+    homing:
+      cycle: 2
+      positive_direction: false
+      mpos_mm: 0.000
+      feed_mm_per_min: 300.000
+      seek_mm_per_min: 1500.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: gpio.33:low:pu
+      hard_limits: true
+      pulloff_mm: 4.000
+      stepstick:
+        step_pin: I2SO.1
+        direction_pin: I2SO.2
+        disable_pin: I2SO.0
+
+  y:
+    steps_per_mm: 800
+    max_rate_mm_per_min: 8000.000
+    acceleration_mm_per_sec2: 70.000
+    max_travel_mm: 1250.000
+    soft_limits: false
+    homing:
+      cycle: 3
+      positive_direction: false
+      mpos_mm: 0.000
+      feed_mm_per_min: 300.000
+      seek_mm_per_min: 2000.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_neg_pin: gpio.32:low:pu
+      hard_limits: false
+      pulloff_mm: 4.000
+      stepstick:
+        step_pin: I2SO.4
+        direction_pin: I2SO.5
+        disable_pin: I2SO.3
+
+  z:
+    steps_per_mm: 800
+    max_rate_mm_per_min: 8000.000
+    acceleration_mm_per_sec2: 60.000
+    max_travel_mm: 80.000
+    soft_limits: false
+    homing:
+      cycle: 1
+      positive_direction: true
+      mpos_mm: 0.000
+      feed_mm_per_min: 300.000
+      seek_mm_per_min: 500.000
+      settle_ms: 500
+      seek_scaler: 1.100
+      feed_scaler: 1.100
+
+    motor0:
+      limit_pos_pin: gpio.22:low:pu
+      hard_limits: true
+      pulloff_mm: 3.000
+      stepstick:
+        step_pin: I2SO.7
+        direction_pin: I2SO.8
+        disable_pin: I2SO.6
+
+control:
+  safety_door_pin: NO_PIN
+  # on MT_DET connector
+  reset_pin: gpio.35:low
+  # on TH1 connector
+  feed_hold_pin: gpio.36:low
+  # on TB connector
+  cycle_start_pin: gpio.39:low
+  macro0_pin: NO_PIN
+  macro1_pin: NO_PIN
+  macro2_pin: NO_PIN
+  macro3_pin: NO_PIN
+
+probe:
+  pin: gpio.2:low:pu
+  check_mode_start: true
+
+coolant:
+  # Heated Bed Terminal Block
+  flood_pin: i2so.16
+  # HE0 Terminal Block
+  mist_pin: i2so.17
+  delay_ms: 0
+
+start:
+  must_home: false
