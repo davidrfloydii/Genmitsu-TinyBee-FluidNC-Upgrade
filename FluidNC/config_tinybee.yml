@@ -32,7 +32,7 @@ axes:
     max_rate_mm_per_min: 2000.000
     acceleration_mm_per_sec2: 80.000
     max_travel_mm: 300
-    soft_limits: false
+    soft_limits: true
     homing:
       cycle: 2
       positive_direction: false
@@ -57,7 +57,7 @@ axes:
     max_rate_mm_per_min: 2000.000
     acceleration_mm_per_sec2: 70.000
     max_travel_mm: 300
-    soft_limits: false
+    soft_limits: true
     homing:
       cycle: 3
       positive_direction: false
@@ -82,7 +82,7 @@ axes:
     max_rate_mm_per_min: 2000.000
     acceleration_mm_per_sec2: 60.000
     max_travel_mm: 78.000
-    soft_limits: false
+    soft_limits: true
     homing:
       cycle: 1
       positive_direction: true
