@@ -126,5 +126,18 @@ coolant:
   mist_pin: i2so.17
   delay_ms: 0
 
+# spindle PWM signal
+pwm:
+  pwm_hz: 1000
+  # on EXP1 IO15 connector.
+  # note IO15 will give some short pulses on boot, which may activate spindle
+  # use IO17 on EXP1 to avoid
+  output_pin: gpio.15:high
+  s0_with_disable: true
+  tool_num: 0
+  spinup_ms: 4000
+  spindown_ms: 4000
+  speed_map: 0=0.000% 12000=100.000%
+
 start:
   must_home: false
