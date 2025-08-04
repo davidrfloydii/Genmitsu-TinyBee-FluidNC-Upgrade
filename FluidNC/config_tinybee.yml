@@ -1,5 +1,5 @@
 board: MKS TinyBee V1.0 XYZ
-name: Teamkde
+name: Grbl 1.1g
 
 kinematics:
   Cartesian:
@@ -105,7 +105,7 @@ axes:
 control:
   safety_door_pin: NO_PIN
   # on MT_DET connector
-  reset_pin: gpio.35:low
+  reset_pin: NO_PIN
   # on TH1 connector
   feed_hold_pin: gpio.36:low
   # on TB connector
@@ -119,12 +119,24 @@ probe:
   pin: gpio.12:low:pu
   check_mode_start: false
 
-coolant:
+# coolant:
   # Heated Bed Terminal Block
-  flood_pin: i2so.16
+  # flood_pin: i2so.16
   # HE0 Terminal Block
-  mist_pin: i2so.17
-  delay_ms: 0
+  # mist_pin: i2so.17
+  # delay_ms: 0
+
+# spindle PWM signal
+PWM:
+  pwm_hz: 1000
+  direction_pin: NO_PIN
+  output_pin: gpio.17
+  disable_with_s0: false
+  s0_with_disable: true
+  spinup_ms: 0
+  spindown_ms: 0
+  tool_num: 0
+  speed_map: 0=0.000% 10000=1.000% 30000=100.000% 
 
 start:
   must_home: false
