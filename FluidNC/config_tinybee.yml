@@ -28,7 +28,7 @@ stepping:
 
 axes:
   x:
-    steps_per_mm: 800
+    steps_per_mm: 801
     max_rate_mm_per_min: 4000.000
     acceleration_mm_per_sec2: 80.000
     max_travel_mm: 300
@@ -53,7 +53,7 @@ axes:
         disable_pin: I2SO.0
 
   y:
-    steps_per_mm: 800
+    steps_per_mm: 801
     max_rate_mm_per_min: 4000.000
     acceleration_mm_per_sec2: 70.000
     max_travel_mm: 300
@@ -78,7 +78,7 @@ axes:
         disable_pin: I2SO.3
 
   z:
-    steps_per_mm: 800
+    steps_per_mm: 801
     max_rate_mm_per_min: 4000.000
     acceleration_mm_per_sec2: 60.000
     max_travel_mm: 77.000
@@ -103,21 +103,19 @@ axes:
         disable_pin: I2SO.6
 
 control:
-  safety_door_pin: NO_PIN
-  # on MT_DET connector
+  # MT_DET connector - pause job + stop spindle
+  safety_door_pin: gpio.35:low
   reset_pin: NO_PIN
-  # on TH1 connector
-  feed_hold_pin: gpio.36:low
-  # on TB connector
-  cycle_start_pin: gpio.39:low
+  feed_hold_pin: NO_PIN
+  # TH1 connector - resume job + restart spindle
+  cycle_start_pin: gpio.36:low
   macro0_pin: NO_PIN
   macro1_pin: NO_PIN
   macro2_pin: NO_PIN
   macro3_pin: NO_PIN
 
 probe:
-  pin: gpio.35:low
-  check_mode_start: true
+  pin: gpio.39:low
 
 # coolant:
   # Heated Bed Terminal Block
@@ -136,7 +134,7 @@ PWM:
   spinup_ms: 0
   spindown_ms: 0
   tool_num: 0
-  speed_map: 0=0.000% 10000=1.000% 30000=100.000% 
+  speed_map: 0=0.000% 10000=1.000% 30000=100.000%
 
 start:
   must_home: false
